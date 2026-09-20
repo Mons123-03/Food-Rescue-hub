@@ -1,0 +1,127 @@
+/* ==========================================================================
+   FOOD RESCUE HUB — Dashboard Extras
+   Extra components used in interior pages (not needed on the landing page).
+   ========================================================================== */
+
+/* Info grid — 2-column key/value layout inside ticket cards */
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem 1rem;
+}
+.info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+.info-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--ink-soft);
+}
+.info-value {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--ink);
+}
+
+/* Filter bar */
+.filter-bar {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+}
+
+/* Urgent ticket highlight */
+.ticket-urgent {
+    border-color: var(--tomato);
+    box-shadow: 0 0 0 2px rgba(200, 69, 39, 0.12), var(--shadow-card);
+}
+
+/* Delivery progress tracker */
+.delivery-progress {
+    display: flex;
+    align-items: center;
+}
+.progress-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    flex-shrink: 0;
+}
+.progress-dot {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--line);
+    border: 2px solid var(--line);
+    transition: background 0.2s;
+}
+.progress-step.done .progress-dot {
+    background: var(--crate-green);
+    border-color: var(--crate-green);
+}
+.progress-step.active .progress-dot {
+    background: var(--white);
+    border: 3px solid var(--crate-green);
+    box-shadow: 0 0 0 3px rgba(47, 75, 38, 0.18);
+}
+.progress-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--ink-soft);
+    white-space: nowrap;
+}
+.progress-step.done .progress-label,
+.progress-step.active .progress-label {
+    color: var(--crate-green);
+    font-weight: 600;
+}
+.progress-line {
+    flex: 1;
+    height: 2px;
+    background: var(--line);
+    margin: 0 0.4rem;
+    margin-bottom: 1.2rem;
+}
+.progress-line.done {
+    background: var(--crate-green);
+}
+
+/* Dashboard sidebar nav (optional, for wider admin views) */
+.dash-sidebar {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1rem;
+}
+.dash-sidebar a {
+    display: block;
+    padding: 0.55rem 0.8rem;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-weight: 600;
+    color: var(--ink-soft);
+    border-radius: var(--radius);
+    text-decoration: none;
+}
+.dash-sidebar a:hover { background: var(--paper-deep); color: var(--ink); }
+.dash-sidebar a.active { background: var(--crate-green); color: var(--white); }
+
+/* Chart card spacing */
+canvas { margin-top: 1rem; }
+
+/* Responsive tweaks */
+@media (max-width: 576px) {
+    .info-grid { grid-template-columns: 1fr; }
+    .delivery-progress { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+    .progress-line { width: 2px; height: 24px; margin: 0 0 0 8px; }
+    .progress-step { flex-direction: row; gap: 0.6rem; }
+    .progress-label { margin-bottom: 0; }
+}
